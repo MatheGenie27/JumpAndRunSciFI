@@ -40,6 +40,10 @@ setInterval(()=>
             console.log("F!");
         }
 
+        if(keyboard.P == true){
+            console.log("P!");
+        }
+
 
 
 

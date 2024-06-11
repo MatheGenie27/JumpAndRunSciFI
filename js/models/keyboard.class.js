@@ -11,4 +11,5 @@ class Keyboard {
     A = false;
     L = false;
     X = false;
+    P = false;
 }

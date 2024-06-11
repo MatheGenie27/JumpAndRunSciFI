@@ -50,6 +50,10 @@ document.addEventListener("keydown", (event) => {
   if (event.key == "l") {
     keyboard.L = true;
   }
+
+  if (event.key == "p") {
+    keyboard.P = true;
+  }
 });
 
 document.addEventListener("keyup", (event) => {
@@ -103,5 +107,9 @@ document.addEventListener("keyup", (event) => {
 
   if (event.key == "l") {
     keyboard.L = false;
+  }
+
+  if (event.key == "p") {
+    keyboard.P = false;
   }
 });
