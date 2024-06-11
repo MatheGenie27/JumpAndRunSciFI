@@ -32,15 +32,15 @@ document.addEventListener("keydown", (event) => {
   }
 
   if (event.key == "w") {
-    keyboard.E = true;
+    keyboard.W = true;
   }
 
   if (event.key == "a") {
-    keyboard.E = true;
+    keyboard.A = true;
   }
 
   if (event.key == "s") {
-    keyboard.E = true;
+    keyboard.S = true;
   }
 
   if (event.key == "x") {
@@ -86,15 +86,15 @@ document.addEventListener("keyup", (event) => {
   }
 
   if (event.key == "w") {
-    keyboard.E = false;
+    keyboard.W = false;
   }
 
   if (event.key == "a") {
-    keyboard.E = false;
+    keyboard.A = false;
   }
 
   if (event.key == "s") {
-    keyboard.E = false;
+    keyboard.S = false;
   }
 
   if (event.key == "x") {
