@@ -11,9 +11,17 @@
     <script src="./js/scripts/keyboardListener.js"></script>
     <script src="./js/scripts/keyboard.debug.js"></script>
     <script defer src="./js/scripts/fullscreen.js"> </script>
+
+    <script src="./js/models/game.class.js"> </script>
+    <script src="./js/models/state.class.js"> </script>
+    <script src="./js/models/menustate.class.js"> </script>
+    <script src="./js/models/playstate.class.js"> </script>
+
+
+    <script defer src="./js/scripts/init.js"></script>
 </head>
 
-<body>
+<body onload="init()">
     <h1>Spiel</h1>
 
     <canvas id="myCanvas" width="720" height ="480">

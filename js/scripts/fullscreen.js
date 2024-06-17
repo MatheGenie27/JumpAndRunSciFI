@@ -33,6 +33,8 @@ function toggleFullscreen(element) {
     }
 }
 
-document.getElementById('myCanvas').addEventListener('click', function() {
-    toggleFullscreen(this);
+document.addEventListener('keypress', (event) => {
+    if (event.key === 'o'){
+        toggleFullscreen(document.getElementById('myCanvas'));
+    }
 });
