@@ -1,5 +1,11 @@
 class Menu{
 
+    menuTitle = {
+
+    };
+
+
+
     startButton = {
         x: 300,
         y: 250,
@@ -7,6 +13,15 @@ class Menu{
         height: 100,
         text: 'Start Game'
     };
+
+
+
+    creditsButton = {
+
+    };
+
+
+
 
 
 }
