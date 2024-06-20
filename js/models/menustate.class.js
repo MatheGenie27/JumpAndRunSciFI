@@ -52,4 +52,26 @@ class MenuState extends State {
         console.log("Exiting Menu State");
         // Hier kannst du Aufräumlogik hinzufügen, falls nötig
     }
+
+
+    handleClick(x,y){
+      
+        
+    }
+
+    handleMouseMove(x,y){
+        let hovering = false;
+        for (const button of this.buttons) {
+            if (x >= button.x && x <= button.x + button.width &&
+                y >= button.y && y <= button.y + button.height) {
+                hovering = true;
+                break;
+            }
+        }
+        this.game.canvas.style.cursor = hovering ? 'pointer' : 'default';
+    }
+    
+
+
+
 }

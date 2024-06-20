@@ -18,4 +18,9 @@ class State {
     draw() {
         // Logik zum Zeichnen des Zustands
     }
+
+    handleClick(x ,y){
+        
+    }
+
 }
