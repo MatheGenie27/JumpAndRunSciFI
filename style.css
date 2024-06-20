@@ -54,6 +54,13 @@ canvas{
     display: block;
 }
 
+h1{
+  font-family: 'Libre Barcode 128 Text';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 5rem;
+}
+
 /** Smartphones----------- */
 @media only screen and (max-width: 720px){
     canvas{
