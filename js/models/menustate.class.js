@@ -2,7 +2,10 @@ class MenuState extends State {
 
     menu = new Menu();
 
-
+    constructor(game){
+        super(game);
+        this.menuMusicSrc='./assets/music/ACTION PACK 1 OGG/Long Preparation.ogg';
+    }
 
 
 
@@ -11,10 +14,14 @@ class MenuState extends State {
 
     enter() {
         console.log("Entering Menu State");
+        
         // Hier kannst du Initialisierungslogik für das Menü hinzufügen
     }
 
     update() {
+        if(keyboard.UP == true){
+            this.game.playBackgroundMusic(this.menuMusicSrc);
+        }
         // Logik zum Aktualisieren des Menüs
         // Hier könntest du z.B. auf Benutzereingaben reagieren
     }
@@ -50,6 +57,7 @@ class MenuState extends State {
 
     exit() {
         console.log("Exiting Menu State");
+        this.game.stopBackgroundMusic();
         // Hier kannst du Aufräumlogik hinzufügen, falls nötig
     }
 

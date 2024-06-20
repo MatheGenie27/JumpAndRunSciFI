@@ -4,6 +4,10 @@ class Game {
         this.context = this.canvas.getContext('2d');
         this.currentState = null;
 
+        this.backgroundMusic = null;
+        this.fadeOutDuration = 3000;
+        this.isFadingOut = false;
+
         this.handleClick = this.handleClick.bind(this);
         this.handleMouse = this.handleMouseMove.bind(this);
 
@@ -27,6 +31,67 @@ class Game {
             this.canvas.addEventListener('click', this.handleClick);
         }
     }
+
+    playBackgroundMusic(src){
+        if (this.backgroundMusic) {
+            this.backgroundMusic.pause();
+        }
+        this.backgroundMusic = new Audio(src);
+        this.backgroundMusic.volume = 0.1;
+        this.backgroundMusic.loop = true;
+
+
+
+
+        this.backgroundMusic.addEventListener('timeupdate', () => {
+            const currentTime = this.backgroundMusic.currentTime;
+            const duration = this.backgroundMusic.duration;
+            // Überprüfe, ob die Musik innerhalb der letzten Sekunde des Loops ist
+            if (!this.isFadingOut && duration - currentTime <= this.fadeOutDuration / 1000) {
+                this.isFadingOut=true;
+                this.fadeOutBackgroundMusic();
+            }
+        });
+        
+        this.backgroundMusic.play();
+        
+    }
+
+    fadeOutBackgroundMusic() {
+        console.log("Music FADEOUT");
+        if (!this.backgroundMusic) return;
+
+        const initialVolume = this.backgroundMusic.volume;
+        const fadeOutInterval = 200; // Intervall für die Lautstärkeänderung (in Millisekunden)
+        const steps = Math.ceil(this.fadeOutDuration / fadeOutInterval);
+        const volumeStep = initialVolume / steps;
+        let volume = this.backgroundMusic.volume;
+
+        const fadeOutTimer = setInterval(() => {
+            
+            volume -= volumeStep; 
+
+            // Überprüfe, ob die Lautstärke auf 0 gesunken ist
+            if (volume <= 0) {
+                clearInterval(fadeOutTimer);
+                this.backgroundMusic.pause();
+                this.backgroundMusic.currentTime = 0;
+                this.backgroundMusic.volume = initialVolume;
+                this.isFadingOut = false;
+                this.backgroundMusic.play();
+                
+            } else {
+                this.backgroundMusic.volume = volume;
+            }
+        }, fadeOutInterval);
+    }
+
+    stopBackgroundMusic(){
+        if (this.backgroundMusic) {
+            this.backgroundMusic.pause();
+        }
+    }
+
 
     loop() {
         requestAnimationFrame(() => this.loop());
