@@ -1,5 +1,10 @@
 class Menu{
 
+    animationWidth= 400;
+    animationHeight=300;
+    animationX = 250; // X-Position für die Animation (Beispielwert)
+    animationY = 150; // Y-Position für die Animation (Beispielwert)
+
     menuTitle = {
         name: 'MenuTitle',
         x:  360,
@@ -79,17 +84,14 @@ class Menu{
         this.backgroundForeImage = new Image();
         this.backgroundForeImage.src = 'assets/img/menuImage/city.png';
         this.backgroundForeImage.onload = () => {
-        // Hier zeichnest du das Vordergrundbild oder startest die Animation
-        this.drawAnimation(ctx);
+        
+        
 };
 
     }
 
     drawAnimation(ctx) {
-        const animationWidth= 400;
-        const animationHeight=300;
-        const animationX = 250; // X-Position für die Animation (Beispielwert)
-        const animationY = 150; // Y-Position für die Animation (Beispielwert)
+        
         const animationSpeed = 0.005;
         
         const targetFPS = 10; // Ziel-FPS
@@ -116,11 +118,10 @@ class Menu{
             let currentImageIndex = Math.floor(this.currentBackgroundImage);
             const image = this.backgroundBackImages[currentImageIndex];
         
-            ctx.drawImage(image, animationX, animationY,animationWidth, animationHeight);
-            ctx.drawImage(this.backgroundForeImage, animationX+36.5, animationY+75, animationWidth-75, animationHeight-75);
+            ctx.drawImage(image, this.animationX, this.animationY,this.animationWidth, this.animationHeight);
+            ctx.drawImage(this.backgroundForeImage, this.animationX+36.5, this.animationY+75, this.animationWidth-75, this.animationHeight-75);
 
-            ctx.strokeStyle = 'white';
-            ctx.strokeRect(animationX, animationY,animationWidth, animationHeight);
+            
         
             this.currentBackgroundImage += animationSpeed;
         
@@ -139,7 +140,14 @@ class Menu{
 
         }
 
-
+    
+     
+    drawAnimationBorder(ctx){
+            console.log("AnimationBorder");
+            ctx.strokeStyle = 'white';
+            
+            ctx.strokeRect(this.animationX-2, this.animationY-2,this.animationWidth+5, this.animationHeight+5);
+   }
 
 
 

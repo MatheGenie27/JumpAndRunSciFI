@@ -75,6 +75,7 @@ class MenuState extends State {
     // Weitere Menüelemente zeichnen
 
     this.menu.drawAnimation(ctx);
+    this.menu.drawAnimationBorder(ctx);
   }
 
   exit() {
