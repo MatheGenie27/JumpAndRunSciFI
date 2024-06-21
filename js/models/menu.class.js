@@ -91,55 +91,31 @@ class Menu{
     }
 
     drawAnimation(ctx) {
-        
-        const animationSpeed = 0.005;
-        
-        const targetFPS = 10; // Ziel-FPS
-        const frameTime = 1000 / targetFPS;
-
-        let lastTimestamp = performance.now();
-        
-
-        const animate = (timestamp) => {
-            requestAnimationFrame(animate);
-        
-            const deltaTime = timestamp - lastTimestamp;
-        
-            if (deltaTime < frameTime) {
-              return; // Überspringen, wenn nicht genug Zeit vergangen ist
-            }
-        
-            lastTimestamp = timestamp;
-
-
-            
-
-        
-            let currentImageIndex = Math.floor(this.currentBackgroundImage);
-            const image = this.backgroundBackImages[currentImageIndex];
-        
-            ctx.drawImage(image, this.animationX, this.animationY,this.animationWidth, this.animationHeight);
-            ctx.drawImage(this.backgroundForeImage, this.animationX+36.5, this.animationY+75, this.animationWidth-75, this.animationHeight-75);
-
-            
-        
-            this.currentBackgroundImage += animationSpeed;
-        
-            if (this.currentBackgroundImage >= this.backgroundBackImages.length) {
+      const animationSpeed = 0.14;
+  
+      const animate = () => {
+          requestAnimationFrame(animate);
+  
+          // Berechnung des aktuellen Bildindex
+          let currentImageIndex = Math.floor(this.currentBackgroundImage);
+          const image = this.backgroundBackImages[currentImageIndex];
+  
+          // Zeichnen der Bilder auf den Canvas
+          ctx.drawImage(image, this.animationX, this.animationY, this.animationWidth, this.animationHeight);
+          ctx.drawImage(this.backgroundForeImage, this.animationX + 36.5, this.animationY + 75, this.animationWidth - 75, this.animationHeight - 75);
+  
+          // Aktualisieren des Bildindexes
+          this.currentBackgroundImage += animationSpeed;
+  
+          // Zurücksetzen des Bildindexes, wenn das Ende der Bilderserie erreicht ist
+          if (this.currentBackgroundImage >= this.backgroundBackImages.length) {
               this.currentBackgroundImage = 0; // Zurücksetzen auf den Anfang
-            }
-          };
-        
-          
-          
-          
-          animate(lastTimestamp); // Starte die Animation
-        
-
-         
-
-        }
-
+          }
+      };
+  
+      // Starten der Animation
+      requestAnimationFrame(animate);
+  }
     
      
     drawAnimationBorder(ctx){

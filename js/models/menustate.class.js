@@ -6,7 +6,7 @@ class MenuState extends State {
     super(game);
     this.menuMusicSrc = "./assets/music/ACTION PACK 1 OGG/Long Preparation.ogg";
     this.musicStarted = false;
-
+    this.ctx = this.game.context;
 
     this.game.canvas.addEventListener("mousemove", (event) => {
         const rect = this.game.canvas.getBoundingClientRect();
@@ -42,7 +42,7 @@ class MenuState extends State {
         }
 
     }
-
+  this.menu.drawAnimation(this.ctx);
     // Hier kannst du Initialisierungslogik für das Menü hinzufügen
   }
 
@@ -52,7 +52,7 @@ class MenuState extends State {
   }
 
   draw() {
-    const ctx = this.game.context;
+    
 
     //this.menu.draw(ctx, menuBackground);
     //this.menu.draw(ctx, title);
@@ -61,21 +61,21 @@ class MenuState extends State {
 
     this.game.clearCanvas();
     
-    ctx.fillStyle = "black";
-    ctx.fillRect(0, 0, this.game.canvas.width, this.game.canvas.height);
+    this.ctx.fillStyle = "black";
+    this.ctx.fillRect(0, 0, this.game.canvas.width, this.game.canvas.height);
 
     //ManinMenu-Title draw
 
-    this.menu.drawTitle(ctx);
+    this.menu.drawTitle(this.ctx);
 
     //Main Menu Buttons draw
 
-    this.menu.drawButtons(ctx);
+    this.menu.drawButtons(this.ctx);
 
     // Weitere Menüelemente zeichnen
 
-    this.menu.drawAnimation(ctx);
-    this.menu.drawAnimationBorder(ctx);
+    
+    this.menu.drawAnimationBorder(this.ctx);
   }
 
   exit() {
