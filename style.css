@@ -40,7 +40,7 @@
 
 
 body{
-    background-color: beige;
+    background-color: rgb(18, 18, 25);
     margin: 0;
 
     display: flex;
@@ -59,6 +59,7 @@ h1{
   font-style: normal;
   font-weight: 500;
   font-size: 5rem;
+  color:aqua;
 }
 
 /** Smartphones----------- */

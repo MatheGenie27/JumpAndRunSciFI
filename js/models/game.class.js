@@ -15,7 +15,7 @@ class Game {
     }
 
     init() {
-        this.switchState(new MenuState(this));
+        this.switchState(new EnterScreenState(this));
         this.loop();
     }
 
@@ -32,30 +32,56 @@ class Game {
         }
     }
 
-    playBackgroundMusic(src){
-        if (this.backgroundMusic) {
-            this.backgroundMusic.pause();
-        }
-        this.backgroundMusic = new Audio(src);
-        this.backgroundMusic.volume = 0.1;
-        this.backgroundMusic.loop = true;
-
-
-
-
-        this.backgroundMusic.addEventListener('timeupdate', () => {
-            const currentTime = this.backgroundMusic.currentTime;
-            const duration = this.backgroundMusic.duration;
-            // Überprüfe, ob die Musik innerhalb der letzten Sekunde des Loops ist
-            if (!this.isFadingOut && duration - currentTime <= this.fadeOutDuration / 1000) {
-                this.isFadingOut=true;
-                this.fadeOutBackgroundMusic();
-            }
-        });
+    clearCanvas(){
         
-        this.backgroundMusic.play();
+            this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         
     }
+
+    playBackgroundMusic(src) {
+        return new Promise((resolve, reject) => {
+            // Event-Listener für das erste Benutzerklicken hinzufügen
+            
+                
+                
+                // Musik abspielen
+                if (this.backgroundMusic) {
+                    this.backgroundMusic.pause();
+                }
+                this.backgroundMusic = new Audio(src);
+                this.backgroundMusic.volume = 0.1;
+                this.backgroundMusic.loop = true;
+    
+                // Event-Listener für das Überprüfen des Loop-Endes hinzufügen
+                this.backgroundMusic.addEventListener('timeupdate', this.handleTimeUpdate);
+    
+                this.backgroundMusic.oncanplaythrough = () => {
+                    this.backgroundMusic.play().then(() => {
+                        resolve();
+                    }).catch(error => {
+                        reject(error);
+                    });
+                };
+    
+                this.backgroundMusic.onerror = (error) => {
+                    reject(error);
+                };
+            }
+    
+            
+        );
+    }
+    
+    handleTimeUpdate = () => {
+        const currentTime = this.backgroundMusic.currentTime;
+        const duration = this.backgroundMusic.duration;
+    
+        // Überprüfe, ob die Musik innerhalb der letzten Sekunde des Loops ist
+        if (!this.isFadingOut && duration - currentTime <= this.fadeOutDuration / 1000) {
+            this.isFadingOut = true;
+            this.fadeOutBackgroundMusic();
+        }
+    };
 
     fadeOutBackgroundMusic() {
         console.log("Music FADEOUT");
