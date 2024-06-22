@@ -1,14 +1,15 @@
 class Menu{
 
-    animationWidth= 400;
-    animationHeight=300;
-    animationX = 250; // X-Position für die Animation (Beispielwert)
-    animationY = 150; // Y-Position für die Animation (Beispielwert)
+    animationWidth= 450;
+    animationHeight=325;
+    animationX = 135; // X-Position für die Animation (Beispielwert)
+    animationY = 75; // Y-Position für die Animation (Beispielwert)
+    showAnimation = true;
 
     menuTitle = {
         name: 'MenuTitle',
         x:  360,
-        y: 75,
+        y: 50,
         width: 100,
         height: 100,
         text: 'Main Menu',
@@ -19,12 +20,12 @@ class Menu{
     buttons = [
         {
             name: 'Startbutton',
-            x: 100,
-            y: 250,
+            x: 210,
+            y: 440,
             width: 150,
             height: 40,
             text: 'Start',
-            onclick: 'click',
+            onclick: () => { this.game.switchState(new PlayState(this.game)); },
             fillstyle: 'Gainsboro',
             font: '29px Silkscreen',
             hovered: false
@@ -36,12 +37,12 @@ class Menu{
 
         {
             name: 'Creditsbutton',
-            x: 100,
-            y: 350,
+            x: 510,
+            y: 440,
             width: 150,
             height: 40,
             text: 'Credits',
-            onclick: 'click',
+            onclick: () => { this.game.switchState(new CreditsState(this.game)); },
             fillstyle: 'Gainsboro',
             font: '29px Silkscreen',
             hovered: false
@@ -68,9 +69,9 @@ class Menu{
     
     backgroundForeImage = 'assets/img/menuImage/city.png';
 
-    constructor(){
+    constructor(game){
         this.preloadAnimationImages();
-        
+        this.game = game;
         
     }
 
@@ -94,6 +95,9 @@ class Menu{
       const animationSpeed = 0.14;
   
       const animate = () => {
+        if(!this.showAnimation){
+            return;
+        }
           requestAnimationFrame(animate);
   
           // Berechnung des aktuellen Bildindex
@@ -115,11 +119,15 @@ class Menu{
   
       // Starten der Animation
       requestAnimationFrame(animate);
-  }
+  } 
+
+    stopAnimation(){
+        this.showAnimation=false;
+    }
     
      
     drawAnimationBorder(ctx){
-            console.log("AnimationBorder");
+            
             ctx.strokeStyle = 'white';
             
             ctx.strokeRect(this.animationX-2, this.animationY-2,this.animationWidth+5, this.animationHeight+5);
