@@ -35,6 +35,19 @@ class Menu extends MenuContent{
 
         },
 
+    {
+        name: 'Infobutton',
+        x:360,
+        y: 440,
+        width: 125,
+        height: 40,
+        text: 'Info',
+        onclick: () => {this.game.switchState(new InfoState(this.game));},
+        fillstyle: 'Gainsboro',
+        font: '29px Silkscreen',
+        hovered: false
+    },
+
         {
             name: 'Creditsbutton',
             x: 510,
@@ -51,7 +64,7 @@ class Menu extends MenuContent{
 
 
 
-        },
+        }
 
     ]
 

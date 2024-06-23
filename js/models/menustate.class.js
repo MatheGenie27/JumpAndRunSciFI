@@ -1,11 +1,11 @@
 class MenuState extends State {
   menu = new Menu(this.game);
-  musicStarted;
+  
 
   constructor(game) {
     super(game);
     this.menuMusicSrc = "./assets/music/ACTION PACK 1 OGG/Long Preparation.ogg";
-    this.musicStarted = false;
+    
   }
 
   enter() {
