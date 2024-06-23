@@ -1,4 +1,4 @@
-class Credits {
+class Credits extends MenuContent {
   menuTitle = {
     name: "MenuTitle",
     x: 360,
@@ -10,7 +10,7 @@ class Credits {
     font: "36px Silkscreen",
   };
 
-  credits = [
+  texts = [
     {
       name: "Developer",
       x: 360,
@@ -67,7 +67,7 @@ class Credits {
   ];
 
 
-button = {
+buttons = [{
     name: 'ReturnButton',
             x: 360,
             y: 440,
@@ -78,10 +78,10 @@ button = {
             fillstyle: 'Gainsboro',
             font: '29px Silkscreen',
             hovered: false
-}
+}]
 
 constructor(game){
-    this.game=game;
+    super(game);
 }
 
 
@@ -91,26 +91,26 @@ drawTitle(ctx){
     ctx.fillText(this.menuTitle.text, this.menuTitle.x, this.menuTitle.y); 
 }
 
-drawCredits(ctx){
-    for (const credit of this.credits) {
-        ctx.fillStyle = credit.fillstyle;
-        ctx.font = credit.font;
-        ctx.fillText(credit.text, credit.x, credit.y);
+drawTexts(ctx){
+    for (const text of this.texts) {
+        ctx.fillStyle = text.fillstyle;
+        ctx.font = text.font;
+        ctx.fillText(text.text, text.x, text.y);
 }
 }
 
 
 // Methode zum Zeichnen der Buttons
-drawButton(ctx) {
-    const button = this.button;
-  ctx.fillStyle =button.hovered ? 'aqua' :button.fillstyle;
-  ctx.font = button.font;
-  ctx.fillText(button.text, button.x, button.y);
+drawButtons(ctx) {
+  for (const button of this.buttons) {
+    ctx.fillStyle = button.hovered ? 'aqua' :button.fillstyle;
+    ctx.font = button.font;
+    ctx.fillText(button.text, button.x, button.y);
 
-  // Optional: Button-Umriss zeichnen
-  ctx.strokeStyle = 'white';
-  ctx.strokeRect(button.x-(button.width/2), button.y - button.height/1.4, button.width, button.height);
-
+    // Optional: Button-Umriss zeichnen
+    ctx.strokeStyle = 'white';
+    ctx.strokeRect(button.x-(button.width/2), button.y - button.height/1.4, button.width, button.height);
+  }
 }
 
 }

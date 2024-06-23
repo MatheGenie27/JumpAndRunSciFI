@@ -1,4 +1,4 @@
-class Menu{
+class Menu extends MenuContent{
 
     animationWidth= 450;
     animationHeight=325;
@@ -70,8 +70,9 @@ class Menu{
     backgroundForeImage = 'assets/img/menuImage/city.png';
 
     constructor(game){
+        super(game);
         this.preloadAnimationImages();
-        this.game = game;
+        
         
     }
 
@@ -98,26 +99,16 @@ class Menu{
         if(!this.showAnimation){
             return;
         }
-          requestAnimationFrame(animate);
-  
-          // Berechnung des aktuellen Bildindex
+          requestAnimationFrame(animate);         
           let currentImageIndex = Math.floor(this.currentBackgroundImage);
-          const image = this.backgroundBackImages[currentImageIndex];
-  
-          // Zeichnen der Bilder auf den Canvas
+          const image = this.backgroundBackImages[currentImageIndex];          
           ctx.drawImage(image, this.animationX, this.animationY, this.animationWidth, this.animationHeight);
-          ctx.drawImage(this.backgroundForeImage, this.animationX + 36.5, this.animationY + 75, this.animationWidth - 75, this.animationHeight - 75);
-  
-          // Aktualisieren des Bildindexes
-          this.currentBackgroundImage += animationSpeed;
-  
-          // Zurücksetzen des Bildindexes, wenn das Ende der Bilderserie erreicht ist
+          ctx.drawImage(this.backgroundForeImage, this.animationX + 36.5, this.animationY + 75, this.animationWidth - 75, this.animationHeight - 75);         
+          this.currentBackgroundImage += animationSpeed;         
           if (this.currentBackgroundImage >= this.backgroundBackImages.length) {
-              this.currentBackgroundImage = 0; // Zurücksetzen auf den Anfang
+              this.currentBackgroundImage = 0; 
           }
       };
-  
-      // Starten der Animation
       requestAnimationFrame(animate);
   } 
 
@@ -134,7 +125,9 @@ class Menu{
    }
 
 
+   drawText(){
 
+   }
 
        
 

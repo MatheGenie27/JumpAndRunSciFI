@@ -38,6 +38,11 @@ class Game {
         
     }
 
+    paintCanvasBlack(){
+        this.context.fillStyle = "black";
+        this.context.fillRect(0, 0, this.canvas.width, this.canvas.height);  
+    }
+
     playBackgroundMusic(src) {
         return new Promise((resolve, reject) => {
             // Event-Listener für das erste Benutzerklicken hinzufügen

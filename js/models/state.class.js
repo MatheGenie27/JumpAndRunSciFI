@@ -1,6 +1,12 @@
 class State {
+    musicStarted;
+
+
     constructor(game) {
         this.game = game;
+        this.musicStarted = false;
+        this.ctx = this.game.context;
+        this.game.canvas.addEventListener("mousemove", (event)=> this.game.handleMouseMove(event));
     }
 
     enter() {
@@ -22,5 +28,28 @@ class State {
     handleClick(x ,y){
         
     }
+
+
+
+    playMusic(src){
+        if (!this.musicStarted) {
+            var playPromise = this.game.playBackgroundMusic(src);
+      
+            if (playPromise !== undefined) {
+              playPromise
+                .then(() => {
+                  console.log("Background music started playing.");
+                })
+                .catch((error) => {
+                  console.error("Failed to play background music:", error);
+                });
+            } else {
+              console.warn(
+                "Audio playback not initiated. Check browser restrictions."
+              );
+            }
+          }
+    }
+
 
 }
