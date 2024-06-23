@@ -5,7 +5,7 @@ class Credits extends MenuContent {
     y: 50,
     width: 100,
     height: 100,
-    text: "Main Menu",
+    text: "Credits",
     fillstyle: "aqua",
     font: "36px Silkscreen",
   };
