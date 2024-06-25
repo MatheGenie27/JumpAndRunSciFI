@@ -1,4 +1,13 @@
 class PlayState extends State {
+
+
+    world = new World();
+
+    constructor(game){
+        super(game);
+    }
+
+
     enter() {
         console.log("Entering Play State");
         // Initialisierung des Spiels
@@ -9,8 +18,10 @@ class PlayState extends State {
     }
 
     draw() {
-        const ctx = this.game.context;
-        ctx.clearRect(0, 0, this.game.canvas.width, this.game.canvas.height);
+        this.game.clearCanvas();
+        this.game.paintCanvasBlack();
+
+        
         
         // Spiellogik zeichnen
     }
@@ -19,4 +30,11 @@ class PlayState extends State {
         console.log("Exiting Play State");
         // Aufräumlogik für das Spiel
     }
+
+
+
+
+    
+
+
 }
