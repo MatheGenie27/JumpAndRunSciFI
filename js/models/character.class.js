@@ -5,6 +5,9 @@ class Character extends MovableObject {
   height = 100;
   isWalking=false; 
   gunDrawn=false;
+  isDead=false;
+  isJump=false;
+  isCrouch=false;
   
   IMAGES_IDLE = [
     'assets/img/character/Sprites/No-Helm/Idle/idle1.png',
@@ -50,8 +53,8 @@ class Character extends MovableObject {
   IMAGES_DIE = [
     'assets/img/character/Sprites/No-Helm/die/die1.png',
     'assets/img/character/Sprites/No-Helm/die/die2.png',
-    'assets/img/character/Sprites/No-Helm/die/die3.png',
-    'assets/img/character/Sprites/No-Helm/die/die4.png',
+    'assets/img/character/Sprites/No-Helm/die/die3.png'
+    
   ]
 
   IMAGES_JUMP = [
@@ -143,6 +146,9 @@ class Character extends MovableObject {
     super().loadImage("assets/img/character/Sprites/No-Helm/Idle/idle1.png");
     this.loadImages(this.IMAGES_IDLE);
     this.loadImages(this.IMAGES_RUN);
+    this.loadImages(this.IMAGES_DIE);
+    this.loadImages(this.IMAGES_JUMP);
+    this.loadImages(this.IMAGES_CROUCH);
     this.world = world;
     this.animate();
   }
@@ -162,25 +168,40 @@ class Character extends MovableObject {
         //this.walking_sound.play();
       }
 
-      if (this.world.game.keyboard.SPACE && !this.isAboveGround()) {
-        this.jump();
+      if (this.world.game.keyboard.SPACE){ //&& !this.isAboveGround()) {
+        this.isJump=true;
+        //this.jump();
+      }
+
+      if(this.world.game.keyboard.D){
+        this.isDead = true;
+      }
+
+      if(this.world.game.keyboard.DOWN){
+        this.isCrouch=true;
       }
 
       //this.world.camera_x = -this.x + 100;
     }, 1000 / 60);
 
     setInterval(() => {
-      if (this.isDead()) {
-        this.playAnimation(this.IMAGES_DEAD);
+      if (this.isDead){//(this.isDead()) {
+        this.playAnimation(this.IMAGES_DIE);
       } else if (this.isHurt()) {
         this.playAnimation(this.IMAGES_HURT);
-      } else if (this.isAboveGround()) {
+      } else if(this.isJump){ //(this.isAboveGround()) {
         this.playAnimation(this.IMAGES_JUMP);
+        
       } else if(this.world.game.keyboard.RIGHT || this.world.game.keyboard.LEFT) {
         
         if(!this.gunDrawn){this.playAnimation(this.IMAGES_RUN);}
-      } else
-      
+      } else if(this.isDead){
+        this.playAnimation(this.IMAGES_DIE);
+      } else if(this.isCrouch){
+        this.playAnimation(this.IMAGES_CROUCH);
+      }
+      else
+
       {
         this.playAnimation(this.IMAGES_IDLE); 
       }
