@@ -1,7 +1,7 @@
 class PlayState extends State {
 
 
-    world = new World();
+    world = new World(this.game);
 
     constructor(game){
         super(game);
@@ -20,6 +20,7 @@ class PlayState extends State {
     draw() {
         this.game.clearCanvas();
         this.game.paintCanvasBlack();
+        this.world.draw();
 
         
         

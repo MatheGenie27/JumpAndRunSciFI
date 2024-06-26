@@ -3,12 +3,21 @@ class World{
     level = level1;
     character;
     enemies=[];
+    ctx;
+    camera_x = 0;
 
 constructor(game){
     this.game = game;
+    this.ctx = this.game.context;
+    this.character = new Character(this);
     console.log("Welt initialisiert.")
+        
     this.run();
 }
+
+
+
+
 
 
 
@@ -37,5 +46,56 @@ checkCollisions(){
            //}
        });
 }
+
+
+draw(){
+    this.ctx.translate(this.camera_x,0); //forward
+
+    //this.addObjectsToMap(this.level.backgroundObjects);
+    //this.addObjectsToMap(this.level.clouds);
+
+    this.ctx.translate(-this.camera_x,0); //back
+    // ----------  Space for fixed Objects -------
+    //this.addToMap(this.statusBar);
+    this.ctx.translate(this.camera_x,0); //forward
+    
+    this.addToMap(this.character);
+    //this.addObjectsToMap(this.level.enemies);
+    //this.addObjectsToMap(this.throwableObjects);
+
+    this.ctx.translate(-this.camera_x,0); // back
+    
+}
+
+
+addObjectsToMap(objects){
+    objects.forEach(o => {
+        this.addToMap(o);
+    })
+}
+
+
+
+addToMap(mo){
+    if(mo.otherDirection){
+        
+        mo.flipImage(this.ctx);
+    }
+
+    mo.draw(this.ctx);
+    mo.showCollisionBox(this.ctx);
+    
+    
+
+
+
+    if(mo.otherDirection){
+        
+        mo.flipImageBack(this.ctx);
+    }
+}
+
+
+
 
 }
