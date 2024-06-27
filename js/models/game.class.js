@@ -218,6 +218,13 @@ class Game {
       if (event.key == "p") {
         keyboard.P = true;
       }
+
+      if (event.key == "g") {
+        keyboard.G = true;
+      }
+      if (event.key == "h") {
+        keyboard.H = true;
+      }
     });
 
     document.addEventListener("keyup", (event) => {
@@ -277,6 +284,16 @@ class Game {
       if (event.key == "p") {
         keyboard.P = false;
       }
+
+      if (event.key == "g") {
+        keyboard.G = false;
+      }
+
+      
+      if (event.key == "h") {
+        keyboard.H = false;
+      }
+
     });
   }
 }
