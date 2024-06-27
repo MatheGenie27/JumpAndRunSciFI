@@ -296,10 +296,10 @@ class Character extends MovableObject {
 
       } else if (this.isClimbing) {
         this.playAnimation(this.IMAGES_CLIMB);
-      } else if (this.world.game.keyboard.F && this.gunDrawn) {
+      } else if (this.world.game.keyboard.F && this.gunDrawn && !this.isCrouch) {
         // Starte SHOOT-Animation, wenn F gedrückt wird und gunDrawn true ist
         this.playAnimation(this.IMAGES_SHOOT);
-      } else if (this.world.game.keyboard.F && !this.gunDrawn) {
+      } else if (this.world.game.keyboard.F && !this.gunDrawn && !this.isCrouch) {
         // Starte SHOOT-Animation, wenn F gedrückt wird und gunDrawn true ist
         this.playAnimation(this.IMAGES_THROW);
       } else {
