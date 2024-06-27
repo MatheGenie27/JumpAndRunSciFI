@@ -7,22 +7,30 @@ class Character extends MovableObject {
   gunDrawn = false;
   isDead = false;
   isJump = false;
-  wasJumping =false;
+  wasJumping = false;
   isCrouch = false;
   wasCrouching = false;
   isClimbing = false;
 
   IMAGES_IDLE = [
     "assets/img/character/Sprites/No-Helm/Idle/idle1.png",
+    "assets/img/character/Sprites/No-Helm/Idle/idle1.png",
+    "assets/img/character/Sprites/No-Helm/Idle/idle2.png",
     "assets/img/character/Sprites/No-Helm/Idle/idle2.png",
     "assets/img/character/Sprites/No-Helm/Idle/idle3.png",
+    "assets/img/character/Sprites/No-Helm/Idle/idle3.png",
+    "assets/img/character/Sprites/No-Helm/Idle/idle4.png",
     "assets/img/character/Sprites/No-Helm/Idle/idle4.png",
   ];
 
   IMAGES_IDLE_GUN = [
     "assets/img/character/Sprites/No-Helm/idle gun/idle-gun1.png",
+    "assets/img/character/Sprites/No-Helm/idle gun/idle-gun1.png",
+    "assets/img/character/Sprites/No-Helm/idle gun/idle-gun2.png",
     "assets/img/character/Sprites/No-Helm/idle gun/idle-gun2.png",
     "assets/img/character/Sprites/No-Helm/idle gun/idle-gun3.png",
+    "assets/img/character/Sprites/No-Helm/idle gun/idle-gun3.png",
+    "assets/img/character/Sprites/No-Helm/idle gun/idle-gun4.png",
     "assets/img/character/Sprites/No-Helm/idle gun/idle-gun4.png",
   ];
 
@@ -64,7 +72,7 @@ class Character extends MovableObject {
     "assets/img/character/Sprites/No-Helm/jump-no-gun/jump-no-gun3.png",
     "assets/img/character/Sprites/No-Helm/jump-no-gun/jump-no-gun4.png",
     "assets/img/character/Sprites/No-Helm/jump-no-gun/jump-no-gun5.png",
-    "assets/img/character/Sprites/No-Helm/jump-no-gun/jump-no-gun6.png"
+    "assets/img/character/Sprites/No-Helm/jump-no-gun/jump-no-gun6.png",
   ];
 
   IMAGES_DE_JUMP = [
@@ -82,11 +90,9 @@ class Character extends MovableObject {
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun3.png",
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun4.png",
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun5.png",
-   
   ];
 
   IMAGES_DE_JUMP_GUN = [
-    
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun5.png",
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun4.png",
     "assets/img/character/Sprites/No-Helm/jump-gun/jump-gun3.png",
@@ -121,13 +127,19 @@ class Character extends MovableObject {
 
   IMAGES_CROUCH = [
     "assets/img/character/Sprites/No-Helm/crouch/crouch1.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch1.png",
     "assets/img/character/Sprites/No-Helm/crouch/crouch2.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch2.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch3.png",
     "assets/img/character/Sprites/No-Helm/crouch/crouch3.png",
   ];
 
   IMAGES_DECROUCH = [
     "assets/img/character/Sprites/No-Helm/crouch/crouch3.png",
     "assets/img/character/Sprites/No-Helm/crouch/crouch2.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch2.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch2.png",
+    "assets/img/character/Sprites/No-Helm/crouch/crouch1.png",
     "assets/img/character/Sprites/No-Helm/crouch/crouch1.png",
   ];
 
@@ -150,10 +162,16 @@ class Character extends MovableObject {
 
   IMAGES_CRAWL = [
     "assets/img/character/Sprites/No-Helm/Crawl/crawl1.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl1.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl2.png",
     "assets/img/character/Sprites/No-Helm/Crawl/crawl2.png",
     "assets/img/character/Sprites/No-Helm/Crawl/crawl3.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl3.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl4.png",
     "assets/img/character/Sprites/No-Helm/Crawl/crawl4.png",
     "assets/img/character/Sprites/No-Helm/Crawl/crawl5.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl5.png",
+    "assets/img/character/Sprites/No-Helm/Crawl/crawl6.png",
     "assets/img/character/Sprites/No-Helm/Crawl/crawl6.png",
   ];
 
@@ -221,7 +239,7 @@ class Character extends MovableObject {
       if (this.world.game.keyboard.G) {
         this.gunDrawn = true;
       }
-      if (this.world.game.keyboard.H){
+      if (this.world.game.keyboard.H) {
         this.gunDrawn = false;
       }
 
@@ -243,69 +261,93 @@ class Character extends MovableObject {
       } else if (this.isHurt()) {
         // Spiele die Hurt-Animation ab
         this.playAnimation(this.IMAGES_HURT);
-      
-      
-      
       } else if (this.isJump && !this.isPlayingJumpAnimation) {
         // Starte Jump-Animation, wenn der Charakter springt
         this.isPlayingJumpAnimation = true;
         this.currentJumpFrame = 0;
-        if(!this.gunDrawn){
-        this.playAnimation(this.IMAGES_JUMP);
+        if (!this.gunDrawn) {
+          this.playAnimation(this.IMAGES_JUMP);
         } else {
-          this-this.playAnimation(this.IMAGES_DE_JUMP_GUN);
+          this - this.playAnimation(this.IMAGES_DE_JUMP_GUN);
         }
       } else if (this.isPlayingJumpAnimation) {
         // Wenn Jump-Animation läuft, halte auf dem letzten Bild an
-        if (this.currentJumpFrame < (this.gunDrawn ? this.IMAGES_JUMP_GUN.length : this.IMAGES_JUMP.length) - 1) {
+        if (
+          this.currentJumpFrame <
+          (this.gunDrawn
+            ? this.IMAGES_JUMP_GUN.length
+            : this.IMAGES_JUMP.length) -
+            1
+        ) {
           this.currentJumpFrame++;
-      }
-      this.img = this.imageCache[this.gunDrawn ? this.IMAGES_JUMP_GUN[this.currentJumpFrame] : this.IMAGES_JUMP[this.currentJumpFrame]];
-    
-        // Überprüfe, ob der Sprung beendet ist (SPACE-Taste nicht mehr gedrückt)
+        }
+        this.img =
+          this.imageCache[
+            this.gunDrawn
+              ? this.IMAGES_JUMP_GUN[this.currentJumpFrame]
+              : this.IMAGES_JUMP[this.currentJumpFrame]
+          ];
+
+        // Überprüfe, ob der Sprung beendet ist 
         if (!this.isJump) {
-            this.isPlayingJumpAnimation = false;
-            this.isPlayingDEJUMPAnimation = true;
-            this.currentDEJUMPFrame = 0;
+          this.isPlayingJumpAnimation = false;
+          this.isPlayingDEJUMPAnimation = true;
+          this.currentDEJUMPFrame = 0;
 
-            if (!this.gunDrawn) {
-              this.playAnimation(this.IMAGES_DE_JUMP);
+          if (!this.gunDrawn) {
+            this.playAnimation(this.IMAGES_DE_JUMP);
           } else {
-              this.playAnimation(this.IMAGES_DE_JUMP_GUN);
+            this.playAnimation(this.IMAGES_DE_JUMP_GUN);
           }
-
         }
-    } else if (this.isPlayingDEJUMPAnimation) {
+      } else if (this.isPlayingDEJUMPAnimation) {
         // Wenn DE_JUMP-Animation läuft, halte auf dem letzten Bild an
-        if (this.currentDEJUMPFrame < (this.gunDrawn ? this.IMAGES_DE_JUMP_GUN.length : this.IMAGES_DE_JUMP.length) - 1) {
+        if (
+          this.currentDEJUMPFrame <
+          (this.gunDrawn
+            ? this.IMAGES_DE_JUMP_GUN.length
+            : this.IMAGES_DE_JUMP.length) -
+            1
+        ) {
           this.currentDEJUMPFrame++;
-      }
-      this.img = this.imageCache[this.gunDrawn ? this.IMAGES_DE_JUMP_GUN[this.currentDEJUMPFrame] : this.IMAGES_DE_JUMP[this.currentDEJUMPFrame]];
-    
-        // Überprüfe, ob DE_JUMP-Animation abgeschlossen ist
-        if (this.currentDEJUMPFrame === (this.gunDrawn ? this.IMAGES_DE_JUMP_GUN.length : this.IMAGES_DE_JUMP.length) - 1) {
-            // Setze Zustände und Steuerungsvariablen zurück
-            this.isPlayingDEJUMPAnimation = false;
-            this.isJump = false;
-            // Setze andere Zustände zurück oder aktualisiere je nach Bedarf
         }
-    
+        this.img =
+          this.imageCache[
+            this.gunDrawn
+              ? this.IMAGES_DE_JUMP_GUN[this.currentDEJUMPFrame]
+              : this.IMAGES_DE_JUMP[this.currentDEJUMPFrame]
+          ];
 
-
-        
-
+        // Überprüfe, ob DE_JUMP-Animation abgeschlossen ist
+        if (
+          this.currentDEJUMPFrame ===
+          (this.gunDrawn
+            ? this.IMAGES_DE_JUMP_GUN.length
+            : this.IMAGES_DE_JUMP.length) -
+            1
+        ) {
+          // Setze Zustände und Steuerungsvariablen zurück
+          this.isPlayingDEJUMPAnimation = false;
+          this.isJump = false;
+          // Setze andere Zustände zurück oder aktualisiere je nach Bedarf
+        }
       } else if (this.isClimbing) {
         this.playAnimation(this.IMAGES_CLIMB);
-      } else if (this.world.game.keyboard.F && this.gunDrawn && !this.isCrouch) {
+      } else if (
+        this.world.game.keyboard.F &&
+        this.gunDrawn &&
+        !this.isCrouch
+      ) {
         // Starte SHOOT-Animation, wenn F gedrückt wird und gunDrawn true ist
         this.playAnimation(this.IMAGES_SHOOT);
-      } else if (this.world.game.keyboard.F && !this.gunDrawn && !this.isCrouch) {
+      } else if (
+        this.world.game.keyboard.F &&
+        !this.gunDrawn &&
+        !this.isCrouch
+      ) {
         // Starte SHOOT-Animation, wenn F gedrückt wird und gunDrawn true ist
         this.playAnimation(this.IMAGES_THROW);
       } else {
-
-
-
         // Handle andere Zustände wie Idle, Run, Crouch, etc.
         if (this.isCrouch) {
           if (!this.wasCrouching) {
