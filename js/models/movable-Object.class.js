@@ -25,6 +25,8 @@ class MovableObject extends DrawableObject {
     }, 1000 / 25);
   }
 
+  
+
   isColliding(obj) {
     console.log("isColliding wird aufgerufen");
     return (
@@ -68,6 +70,11 @@ class MovableObject extends DrawableObject {
     return this.energy == 0;
   }
 
+ 
+
+
+
+  
   flipImage(ctx) {
     ctx.save();
     ctx.translate(this.width, 0);
@@ -79,6 +86,7 @@ class MovableObject extends DrawableObject {
     this.x = this.x * -1;
     ctx.restore();
   }
+  
 
   moveRight() {
     this.x += this.runSpeed;

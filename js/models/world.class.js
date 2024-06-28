@@ -55,6 +55,7 @@ draw(){
     //this.addObjectsToMap(this.level.clouds);
 
     this.addToMap(this.character);
+    this.character.collisionBoxHandler.showCollisionBox(this.ctx);
     //this.addObjectsToMap(this.level.enemies);
     //this.addObjectsToMap(this.throwableObjects);
     //this.addObjectsToMap(this.shotObjects);
@@ -88,7 +89,9 @@ addToMap(mo){
     }
 
     mo.draw(this.ctx);
-    mo.showCollisionBox(this.ctx);
+    mo.showSpriteBox(this.ctx);
+    //mo.showCollisionBox(this.ctx);
+    
     
     
 

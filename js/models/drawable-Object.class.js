@@ -3,6 +3,9 @@ class DrawableObject {
     y = 280;
     height = 150;
     width = 100;
+
+    
+
     img;
     imageCache = [];
     currentImage = 0;
@@ -24,7 +27,7 @@ class DrawableObject {
       ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
     }
   
-    showCollisionBox(ctx){
+    showSpriteBox(ctx){
       if(this instanceof Character){ // || this instanceof Chicken || this instanceof Endboss ){
       ctx.beginPath();
       ctx.lineWidth = '1.5';
@@ -33,6 +36,7 @@ class DrawableObject {
       ctx.stroke();
       }
   }
+
   
   
   

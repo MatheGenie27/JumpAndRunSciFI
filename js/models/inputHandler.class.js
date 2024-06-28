@@ -15,62 +15,79 @@ class InputHandler{
     }
 
     handleInput() {
-        if (this.keyboard.RIGHT && !this.character.attack) {
-          // && this.x < this.world.level.level_end_x) {
-          if (!this.character.isCrouch) {
-            this.character.moveRight();
-            //this.walking_sound.play();
-          } else {
-            this.character.crouchRight();
-          }
-        }
+        const { keyboard, character } = this;
     
-        if (this.keyboard.LEFT && !this.character.attack) { //&& this.character.x > 0) {
-          if (!this.character.isCrouch) {
-            this.character.moveLeft();
-            //this.walking_sound.play();
-          } else {
-            this.character.crouchLeft();
-          }
-        }
+        for (const key in keyboard) {
+            switch (key) {
+                case "RIGHT":
+                    if (keyboard.RIGHT && !character.attack) {
+                        if (!character.isCrouch) {
+                            character.isRunning=true;
+                            character.moveRight();
+                        } else {
+                            character.isCrouching=true;
+                            character.crouchRight();
+                        }
+                    }else{
+                        character.isRunning=false;
+                        character.isCrouching=false;
+                    }
+                    break;
     
-        if (this.keyboard.SPACE) {
-          //&& !this.isAboveGround()) {
-          this.character.isJump = true;
-          //this.jump();
-        } else {
-          this.character.isJump = false;
-        }
+                case "LEFT":
+                    if (keyboard.LEFT && !character.attack) {
+                        if (!character.isCrouch) {
+                            character.isRunning=true;
+                            character.moveLeft();
+                        } else {
+                            character.isCrouching=true;
+                            character.crouchLeft();
+                        }
+                    } else {
+                        character.isRunning=false;
+                        character.isCrouching=false;
+                    }
+                    break;
     
-        if (this.keyboard.UP) {
-          this.character.isClimbing = true;
-        } else {
-          this.character.isClimbing = false;
-        }
+                case "SPACE":
+                    character.isJump = keyboard.SPACE;
+                    break;
     
-        if (this.keyboard.D) {
-          this.character.isDead = true;
-        }
+                case "UP":
+                    character.isClimbing = keyboard.UP;
+                    break;
     
-        if (this.keyboard.DOWN) {
-          this.character.isCrouch = true;
-        } else {
-          this.character.isCrouch = false;
-        }
+                case "D":
+                    character.isDead = keyboard.D;
+                    break;
     
-        if (this.keyboard.G) {
-          this.character.gunDrawn = true;
-        }
-        if (this.keyboard.H) {
-          this.character.gunDrawn = false;
-        }
+                case "DOWN":
+                    character.isCrouch = keyboard.DOWN;
+                    break;
     
-        if (this.keyboard.F && !this.keyboard.DOWN && !this.keyboard.UP ) {
-          this.character.attack = true;
-        } else {
-          this.character.attack = false;
+                case "G":
+                    character.gunDrawn = keyboard.G;
+                    break;
+    
+                case "H":
+                    character.gunDrawn = !keyboard.H;
+                    break;
+    
+                case "F":
+                    if (!keyboard.DOWN && !keyboard.UP) {
+                        character.attack = keyboard.F;
+                    } else {
+                        character.attack = false;
+                    }
+                    break;
+    
+                default:
+                    character.isIdle=true
+                    break;
+            }
         }
-      }
     }
+    }
+    
     
 
