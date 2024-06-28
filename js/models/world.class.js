@@ -51,17 +51,22 @@ checkCollisions(){
 draw(){
     this.ctx.translate(this.camera_x,0); //forward
 
-    //this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.backgroundObjects);
     //this.addObjectsToMap(this.level.clouds);
+
+    this.addToMap(this.character);
+    //this.addObjectsToMap(this.level.enemies);
+    //this.addObjectsToMap(this.throwableObjects);
+    //this.addObjectsToMap(this.shotObjects);
+
+    this.addObjectsToMap(this.level.foregroundObjects);
 
     this.ctx.translate(-this.camera_x,0); //back
     // ----------  Space for fixed Objects -------
     //this.addToMap(this.statusBar);
     this.ctx.translate(this.camera_x,0); //forward
     
-    this.addToMap(this.character);
-    //this.addObjectsToMap(this.level.enemies);
-    //this.addObjectsToMap(this.throwableObjects);
+   
 
     this.ctx.translate(-this.camera_x,0); // back
     

@@ -8,36 +8,44 @@
 
     <link href="./style.css" rel="stylesheet">
 
-    <script src="./js/models/keyboard.class.js"></script>
-    
- 
-    <script defer src="./js/scripts/fullscreen.js"> </script>
-    <script src="./js/models/drawable-Object.class.js"></script>
-    <script src="./js/models/movable-Object.class.js"></script>
-    <script src="./js/models/backGround-Object.class.js"></script>
-    <script src="./js/models/characterImages.class.js"> </script>
-    <script src="./js/models/AnimationManager.class.js"></script>
-    <script src="./js/models/character.class.js"></script>
-    <script src="./js/models/enemy.class.js"></script>
-    <script src="./js/models/game.class.js"> </script>
-    <script src="./js/models/level.class.js"></script>
-    <script src="./level/level1.js"></script>
-    <script src="./js/models/world.class.js"></script>
-    
-    
-    <script src="./js/models/state.class.js"> </script>
-    <script src="./js/models/menucontent.class.js"></script>
-    <script src="./js/models/menu.class.js"> </script>
-    <script src="./js/models/menustate.class.js"> </script>
-    <script src="./js/models/playstate.class.js"> </script>
-    <script src="./js/models/info.class.js"></script>
-    <script src="./js/models/infostate.class.js"></script>
-    <script src="./js/models/enterscreenstate.class.js"></script>
-    <script src="./js/models/credits.class.js"></script>
-    <script src="./js/models/creditsstate.class.js"></script>
+    <!-- Grundlegende Klassen und Modelle -->
+<script src="./js/models/keyboard.class.js"></script>
+<script src="./js/models/drawable-Object.class.js"></script>
+<script src="./js/models/movable-Object.class.js"></script>
 
+<!-- Modelle für spezifische Objekte -->
+<script src="./js/models/backGround-Object.class.js"></script>
+<script src="./js/models/characterImages.class.js"></script>
+<script src="./js/models/AnimationManager.class.js"></script>
+<script src="./js/models/cameraHandler.class.js"></script>
+<script src="./js/models/inputHandler.class.js"></script>
+<script src="./js/models/character.class.js"></script>
+<script src="./js/models/shot-Object.class.js"></script>
+<script src="./js/models/enemy.class.js"></script>
+<script src="./js/models/level.class.js"></script>
 
-    <script defer src="./js/scripts/init.js"></script>
+<!-- Level-Daten -->
+<script src="./level/level1.js"></script>
+
+<!-- Welt und Spiel-Klassen -->
+<script src="./js/models/world.class.js"></script>
+<script src="./js/models/game.class.js"></script>
+
+<!-- Zustands- und Menüklassen -->
+<script src="./js/models/state.class.js"></script>
+<script src="./js/models/menucontent.class.js"></script>
+<script src="./js/models/menu.class.js"></script>
+<script src="./js/models/menustate.class.js"></script>
+<script src="./js/models/playstate.class.js"></script>
+<script src="./js/models/info.class.js"></script>
+<script src="./js/models/infostate.class.js"></script>
+<script src="./js/models/enterscreenstate.class.js"></script>
+<script src="./js/models/credits.class.js"></script>
+<script src="./js/models/creditsstate.class.js"></script>
+
+<!-- Initialisierungsskripte -->
+<script defer src="./js/scripts/fullscreen.js"></script>
+<script defer src="./js/scripts/init.js"></script>
 </head>
 
 <body onload="init()">

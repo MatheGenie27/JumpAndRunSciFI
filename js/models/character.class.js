@@ -3,6 +3,8 @@ class Character extends MovableObject {
 
   width = 150;
   height = 100;
+  runSpeed = 4;
+  crouchSpeed = 2;
   isWalking = false;
   gunDrawn = false;
   isDead = false;
@@ -12,23 +14,35 @@ class Character extends MovableObject {
   wasCrouching = false;
   isClimbing = false;
   attack = false;
+  
 
-  characterImages = new CharacterImages(this);
-  animationManager = new AnimationManager(this);
+  characterImages; 
+  animationManager ;
+  inputHandler ;
 
   constructor(world) {
     super();
+    this.characterImages= new CharacterImages(this);
     this.characterImages.preloadImages();
     this.world = world;
+    this.animationManager= new AnimationManager(this);
+    this.inputHandler = new InputHandler(this);
+    this.cameraHandler = new CameraHandler(this);
+
+
+
     this.animate();
   }
 
   animate() {
     setInterval(() => {
       //this.walking_sound.pause();
-      this.handleInput();
-
-      //this.world.camera_x = -this.x + 100;
+      this.inputHandler.handleInput();
+      
+      
+      //this.world.camera_x = -this.x + 100; <-- Notfall Kamera Reset
+      this.cameraHandler.cameraHandling(); 
+      
     }, 1000 / 60);
 
     setInterval(() => {
@@ -36,52 +50,6 @@ class Character extends MovableObject {
     }, 1000 / 12);
   }
 
-  handleInput() {
-    if (this.world.game.keyboard.RIGHT) {
-      // && this.x < this.world.level.level_end_x) {
-      this.moveRight();
-    }
+  
 
-    if (this.world.game.keyboard.LEFT && this.x > 0) {
-      this.moveLeft();
-      //this.walking_sound.play();
-    }
-
-    if (this.world.game.keyboard.SPACE) {
-      //&& !this.isAboveGround()) {
-      this.isJump = true;
-      //this.jump();
-    } else {
-      this.isJump = false;
-    }
-
-    if (this.world.game.keyboard.UP) {
-      this.isClimbing = true;
-    } else {
-      this.isClimbing = false;
-    }
-
-    if (this.world.game.keyboard.D) {
-      this.isDead = true;
-    }
-
-    if (this.world.game.keyboard.DOWN) {
-      this.isCrouch = true;
-    } else {
-      this.isCrouch = false;
-    }
-
-    if (this.world.game.keyboard.G) {
-      this.gunDrawn = true;
-    }
-    if (this.world.game.keyboard.H) {
-      this.gunDrawn = false;
-    }
-
-    if (this.world.game.keyboard.F){
-      this.attack = true;
-    } else {
-      this.attack = false;
-    }
-  }
 }

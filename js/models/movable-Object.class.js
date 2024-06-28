@@ -1,5 +1,6 @@
 class MovableObject extends DrawableObject {
-  speed;
+  runSpeed;
+  crouchSpeed;
   otherDirection = false;
   speedY = 0;
   acceleration = 1;
@@ -80,18 +81,25 @@ class MovableObject extends DrawableObject {
   }
 
   moveRight() {
-    //this.x += this.speed;
-    
-    console.log("move Right");
+    this.x += this.runSpeed;
     this.otherDirection = false;
     //this.walking_sound.play();
   }
 
+  crouchRight(){
+    this.x += this.crouchSpeed;
+    this.otherDirection = false;
+  }
+
   moveLeft() {
-    console.log("move Left");
     this.otherDirection = true;
-    //this.x -= this.speed;
+    this.x -= this.runSpeed;
     
+  }
+
+  crouchLeft(){
+    this.otherDirection = true;
+    this.x -= this.crouchSpeed;
   }
 
   jump() {

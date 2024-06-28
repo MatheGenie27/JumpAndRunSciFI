@@ -2,7 +2,8 @@ class Level{
 
     enemies = [];
     clouds;
-    backgroundObjects;
+    backgroundObjects = [];
+    foregroundObjects=[];
     level_end_x;
 
 

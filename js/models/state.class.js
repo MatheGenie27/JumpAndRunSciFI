@@ -1,6 +1,6 @@
 class State {
     musicStarted;
-
+    game;
 
     constructor(game) {
         this.game = game;

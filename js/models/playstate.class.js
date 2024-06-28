@@ -1,6 +1,6 @@
 class PlayState extends State {
 
-
+    
     world = new World(this.game);
 
     constructor(game){
