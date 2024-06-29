@@ -16,7 +16,7 @@ class AnimationManager {
     }
   
     determineState() {
-      if (this.character.isDead) return 'dead';
+      if (this.character.isDead) return 'dead'; 
       if (this.character.isHurt()) return 'hurt';
       if (this.character.isJump && !this.isPlayingJumpAnimation) return 'startJump';
       if (this.isPlayingJumpAnimation) return 'jump';
@@ -87,9 +87,11 @@ class AnimationManager {
     }
   
     startJumpAnimation() {
+      this.character.isJumpStart=true;
       this.isPlayingJumpAnimation = true;
       this.currentJumpFrame = 0;
       this.character.playAnimation(this.character.gunDrawn ? this.character.characterImages.IMAGES_JUMP_GUN : this.character.characterImages.IMAGES_JUMP);
+      this.character.isJumpStart=false;
     }
   
     playJumpAnimation() {

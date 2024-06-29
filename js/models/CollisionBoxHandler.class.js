@@ -46,19 +46,52 @@ class CollisionBoxHandler{
 
       checkCollisionBoxCoordinates(){
             if (this.character.isIdle){
-                let w = this.character.width/2.5;
+                //console.log("is Idle");
+                let w = this.character.width/3;
                 let h = this.character.height-15;
-                let x = this.character.x+45;
+                let x = this.character.x+50;
                 let y = this.character.y+15;
                 this.updateCollisionBox(x,y,w,h);
             }
 
             if (this.character.isRunning){
-                let w = this.character.width;
-                let h = this.character.height;
-                let x = this.character.x;
-                let y = this.character.y;
+                //console.log("is Running");
+                let w = this.character.width/3;
+                let h = this.character.height-22;
+                let x = this.character.x+50;
+                let y = this.character.y+22;
                 this.updateCollisionBox(x,y,w,h);
+            
+            
+            }
+
+            if(this.character.isCrouch){
+                //console.log("is crouching");
+                let w = this.character.width/2;
+                let h = this.character.height-60;
+                let x = this.character.x+40;
+                let y = this.character.y+60;
+                this.updateCollisionBox(x,y,w,h);
+            }
+
+            
+
+            if(this.character.isJump){
+                //console.log("isJumping");
+
+                let w = this.character.width/3;
+                let h = this.character.height-40;
+                let x = this.character.x+50;
+                let y = this.character.y+40;
+                this.updateCollisionBox(x,y,w,h);
+
+                setTimeout(() => {
+                w = this.character.width/3;
+                h = this.character.height-50;
+                x = this.character.x+50;
+                y = this.character.y+50;
+                this.updateCollisionBox(x,y,w,h);
+                },300)
             }
       }
 }

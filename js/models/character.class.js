@@ -12,12 +12,13 @@ class Character extends MovableObject {
   isJump = false;
   wasJumping = false;
   isCrouch = false;
-  isCrouching=false;
+  
   wasCrouching = false;
   isClimbing = false;
   isRunning=false;
   attack = false;
-  isIdle = true;
+  isIdle = false;
+  
   
   
 
