@@ -49,6 +49,7 @@ class InputHandler {
 
         case "SPACE":
           character.isJump = keyboard.SPACE;
+          character.jump();
           break;
 
         case "UP":
@@ -88,15 +89,21 @@ class InputHandler {
     }
 
     if(!anyKeyPressed){
-        console.log("KEINE TASTE GEDRÜCKT");
+       // console.log("KEINE TASTE GEDRÜCKT");
         character.isRunning=false;
         character.isCrouch=false;
         character.isClimbing=false;
         character.attack=false;
         
         character.attack=false;
-        character.isJump=false;
-        character.isIdle=true;
+        
+        if (character.isJump){
+          character.isIdle=false;
+        } else {
+          character.isIdle=true;
+        }
+        
+        
         
     }
 

@@ -1,6 +1,6 @@
 class Character extends MovableObject {
   world;
-
+  
   width = 75;
   height = 48;
   sizingFactor = 2;
@@ -12,6 +12,8 @@ class Character extends MovableObject {
   isJump = false;
   wasJumping = false;
   isCrouch = false;
+  
+  
   
   wasCrouching = false;
   isClimbing = false;
@@ -38,7 +40,9 @@ class Character extends MovableObject {
     this.world = world;
     this.animationManager= new AnimationManager(this);
     this.inputHandler = new InputHandler(this);
-
+    this.y = this.world.level.ground_y - this.height -50;
+    this.applyGravity();
+ 
 
 
 this.collisionBoxHandler = new CollisionBoxHandler(this);
@@ -56,11 +60,17 @@ this.cameraHandler = new CameraHandler(this);
       //this.world.camera_x = -this.x + 100; <-- Notfall Kamera Reset
       this.cameraHandler.cameraHandling(); 
       this.collisionBoxHandler.runCollisionBox();
+      if (!this.isAboveGround()){
+        this.isJump=false;
+      }
       
     }, 1000 / 60);
 
     setInterval(() => {
       this.animationManager.update();
+      //console.log("isAboveGround: " +this.isAboveGround())
+      //console.log("isJump: " +this.isJump);
+
     }, 1000 / 12);
   }
 

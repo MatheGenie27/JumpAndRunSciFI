@@ -47,19 +47,19 @@ class CollisionBoxHandler{
       checkCollisionBoxCoordinates(){
             if (this.character.isIdle){
                 //console.log("is Idle");
-                let w = this.character.width/3;
-                let h = this.character.height-15;
-                let x = this.character.x+50;
-                let y = this.character.y+15;
+                let w = this.character.width/(1.5*this.character.sizingFactor);
+                let h = this.character.height-(7.5*this.character.sizingFactor);
+                let x = this.character.x+(25*this.character.sizingFactor);
+                let y = this.character.y+(7.5 * this.character.sizingFactor);
                 this.updateCollisionBox(x,y,w,h);
             }
 
             if (this.character.isRunning){
                 //console.log("is Running");
-                let w = this.character.width/3;
-                let h = this.character.height-22;
-                let x = this.character.x+50;
-                let y = this.character.y+22;
+                let w = this.character.width/(1.5* this.character.sizingFactor);
+                let h = this.character.height-(11 * this.character.sizingFactor);
+                let x = this.character.x+(25*this.character.sizingFactor);
+                let y = this.character.y+(11*this.character.sizingFactor);
                 this.updateCollisionBox(x,y,w,h);
             
             
@@ -67,10 +67,10 @@ class CollisionBoxHandler{
 
             if(this.character.isCrouch){
                 //console.log("is crouching");
-                let w = this.character.width/2;
-                let h = this.character.height-60;
-                let x = this.character.x+40;
-                let y = this.character.y+60;
+                let w = this.character.width/(1*this.character.sizingFactor);
+                let h = this.character.height-(30*this.character.sizingFactor);
+                let x = this.character.x+(20*this.character.sizingFactor);
+                let y = this.character.y+(30*this.character.sizingFactor);
                 this.updateCollisionBox(x,y,w,h);
             }
 
@@ -79,17 +79,17 @@ class CollisionBoxHandler{
             if(this.character.isJump){
                 //console.log("isJumping");
 
-                let w = this.character.width/3;
-                let h = this.character.height-40;
-                let x = this.character.x+50;
-                let y = this.character.y+40;
+                let w = this.character.width/(1.5 * this.character.sizingFactor);
+                let h = this.character.height-(20*this.character.sizingFactor);
+                let x = this.character.x+(25*this.character.sizingFactor);
+                let y = this.character.y+(20*this.character.sizingFactor);
                 this.updateCollisionBox(x,y,w,h);
 
                 setTimeout(() => {
-                w = this.character.width/3;
-                h = this.character.height-50;
-                x = this.character.x+50;
-                y = this.character.y+50;
+                w = this.character.width/(1.5 * this.character.sizingFactor);
+                h = this.character.height-(25*this.character.sizingFactor);
+                x = this.character.x+(25*this.character.sizingFactor);
+                y = this.character.y+(25*this.character.sizingFactor);
                 this.updateCollisionBox(x,y,w,h);
                 },300)
             }

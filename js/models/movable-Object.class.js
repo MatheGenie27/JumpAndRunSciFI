@@ -12,19 +12,32 @@ class MovableObject extends DrawableObject {
     //if ((this instanceof throwableObject)){
     //    return true;
     // } else {
-    return this.y < 130;
-    // }
+    if ((this instanceof Character)){
+      //console.log("is above Ground" +this.y > this.world.level.ground_y)
+      //console.log("Character Y :" +this.y);
+      //console.log(this.world.level.ground_y +"  " +this.y);
+      //console.log(this.y+this.height+20 < this.world.level.ground_y);
+      return (this.y+this.height+20 < this.world.level.ground_y);
+    } //else {}
+    //return this.y < 130;
+    //}
   }
 
   applyGravity() {
     setInterval(() => {
       if (this.isAboveGround() || this.speedY > 0) {
+        //console.log("gravitation beschleunigt, da Objekt über Boden");
         this.y -= this.speedY;
         this.speedY -= this.acceleration;
+      } else {
+        
+        
+        
       }
-    }, 1000 / 25);
+      //console.log("speedY: "+this.speedY);
+    }, 1000 / 30); 
   }
-
+  
   
 
   isColliding(obj) {
@@ -102,7 +115,7 @@ class MovableObject extends DrawableObject {
   moveLeft() {
     this.otherDirection = true;
     this.x -= this.runSpeed;
-    
+         
   }
 
   crouchLeft(){
@@ -111,7 +124,11 @@ class MovableObject extends DrawableObject {
   }
 
   jump() {
-    console.log("JUMP in MO");
-    this.speedY = 25;
-  }
+    console.log("JUMP in MO"); 
+    if(this instanceof Character && !this.isAboveGround()){
+    this.speedY = 13;
+    }
+    }
+    
+  
 }

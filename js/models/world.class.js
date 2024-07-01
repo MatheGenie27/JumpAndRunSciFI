@@ -52,6 +52,7 @@ draw(){
     this.ctx.translate(this.camera_x,0); //forward
 
     this.addObjectsToMap(this.level.backgroundObjects);
+    this.addObjectsToMap(this.level.floorObjects);
     //this.addObjectsToMap(this.level.clouds);
 
     this.addToMap(this.character);

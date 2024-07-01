@@ -1,9 +1,9 @@
 class DrawableObject {
     x = 150;
-    y = 280;
+    y = 380;
     height = 150;
     width = 100;
-
+    sizingFactor = 2;
     
 
     img;

@@ -8,6 +8,7 @@ class AnimationManager {
       this.currentJumpFrame = 0;
       this.currentDeJumpFrame = 0;
       this.wasCrouching = false;
+      this.isLanded=false;
     }
   
     update() {
@@ -20,7 +21,7 @@ class AnimationManager {
       if (this.character.isHurt()) return 'hurt';
       if (this.character.isJump && !this.isPlayingJumpAnimation) return 'startJump';
       if (this.isPlayingJumpAnimation) return 'jump';
-      if (this.isPlayingDeJumpAnimation) return 'deJump';
+      if (this.isPlayingDeJumpAnimation && !this.character.isJump) return 'deJump';
       if (this.character.isClimbing) return 'climb';
       if (this.character.isCrouch) return 'crouch';
       if (this.character.attack && this.character.gunDrawn) return 'shoot';
@@ -87,11 +88,12 @@ class AnimationManager {
     }
   
     startJumpAnimation() {
-      this.character.isJumpStart=true;
+      
       this.isPlayingJumpAnimation = true;
+      this.isLanded = false;
       this.currentJumpFrame = 0;
       this.character.playAnimation(this.character.gunDrawn ? this.character.characterImages.IMAGES_JUMP_GUN : this.character.characterImages.IMAGES_JUMP);
-      this.character.isJumpStart=false;
+      
     }
   
     playJumpAnimation() {
@@ -102,6 +104,7 @@ class AnimationManager {
   
       if (!this.character.isJump) {
         this.isPlayingJumpAnimation = false;
+        this.isLanded=true;
         this.isPlayingDeJumpAnimation = true;
         this.currentDeJumpFrame = 0;
         this.character.playAnimation(this.character.gunDrawn ? this.character.characterImages.IMAGES_DE_JUMP_GUN : this.character.characterImages.IMAGES_DE_JUMP);
@@ -117,6 +120,7 @@ class AnimationManager {
       if (this.currentDeJumpFrame === (this.character.gunDrawn ? this.character.characterImages.IMAGES_DE_JUMP_GUN.length : this.character.characterImages.IMAGES_DE_JUMP.length) - 1) {
         this.isPlayingDeJumpAnimation = false;
         this.character.isJump = false;
+        this.isLanded = false;
       }
     }
   

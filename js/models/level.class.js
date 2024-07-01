@@ -1,5 +1,7 @@
 class Level{
 
+    backgroundset;
+    ground_y; 
     enemies = [];
     clouds;
     backgroundObjects = [];
