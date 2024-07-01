@@ -124,7 +124,7 @@ class MovableObject extends DrawableObject {
   }
 
   jump() {
-    console.log("JUMP in MO"); 
+    //console.log("JUMP in MO"); 
     if(this instanceof Character && !this.isAboveGround()){
     this.speedY = 13;
     }

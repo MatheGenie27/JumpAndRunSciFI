@@ -11,8 +11,8 @@ class CameraHandler{
         this.camera = this.character.world;
         this.leftBorder=0;
         this.rightBorder=720;
-        this.leftSpacing = 0;
-        this.rightSpacing = this.character.width;
+        this.leftSpacing = 0.25*this.character.width;
+        this.rightSpacing = 1.6*this.character.width;
     }
 
 
