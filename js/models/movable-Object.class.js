@@ -18,9 +18,13 @@ class MovableObject extends DrawableObject {
       //console.log(this.world.level.ground_y +"  " +this.y);
       //console.log(this.y+this.height+20 < this.world.level.ground_y);
       return (this.y+this.height+20 < this.world.level.ground_y);
-    } //else {}
-    //return this.y < 130;
-    //}
+    } else if(this instanceof Enemy){
+      return (this.y+this.height+20 < this.ground_y);
+    }
+
+    else {
+     return this.y+this.height+20 < this.world.level.ground_y;
+    }
   }
 
   applyGravity() {

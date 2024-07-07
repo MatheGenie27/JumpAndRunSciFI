@@ -21,7 +21,7 @@ class Info extends MenuContent {
                 y: 440,
                 width:375,
                 height: 40,
-                text: 'Return to MainMenu',
+                text: 'Return to Main Menu',
                 onclick: () => { this.game.switchState(new MenuState(this.game)); },
                 fillstyle: 'Gainsboro',
                 font: '29px Silkscreen',

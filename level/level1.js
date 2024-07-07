@@ -79,9 +79,16 @@ function createForeground(){
 }
 
 
+function createEnemies(){
+    level1.enemies.push(new Shell(level1.ground_y));
+}
+
+
+
 createFloor();
 createBackground();
 createForeground();
+createEnemies();
 
 
 

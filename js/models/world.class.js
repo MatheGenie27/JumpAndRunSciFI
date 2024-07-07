@@ -57,7 +57,7 @@ draw(){
 
     this.addToMap(this.character);
     this.character.collisionBoxHandler.showCollisionBox(this.ctx);
-    //this.addObjectsToMap(this.level.enemies);
+    this.addObjectsToMap(this.level.enemies);
     //this.addObjectsToMap(this.throwableObjects);
     //this.addObjectsToMap(this.shotObjects);
 
