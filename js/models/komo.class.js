@@ -1,17 +1,17 @@
-class Shell extends Enemy {
-    x=500;
-    width=51;
-    height=40;
+class Komo extends Enemy{
+    x=1500;
+    width=96;
+    height=32;
     sizingFactor= 1.3;
-    runSpeed = 0.2;
+    runSpeed = 3;
 
 
 IMAGES_MOVE = [
-    "assets/img/enemies/shell/move/move1.png",
-    "assets/img/enemies/shell/move/move2.png",
-    "assets/img/enemies/shell/move/move3.png",
-    "assets/img/enemies/shell/move/move4.png",
-    "assets/img/enemies/shell/move/move5.png"
+   "assets/img/enemies/komo/move/komo1.png",
+   "assets/img/enemies/komo/move/komo2.png",
+   "assets/img/enemies/komo/move/komo3.png",
+   "assets/img/enemies/komo/move/komo4.png",
+   "assets/img/enemies/komo/move/komo5.png"
 ]
 
 
@@ -58,4 +58,3 @@ animate(){
         }, 1000 / 12);
 }
 }
-

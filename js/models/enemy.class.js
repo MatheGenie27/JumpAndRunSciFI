@@ -1,12 +1,13 @@
 class Enemy extends MovableObject{
 
+level;
 
 
 
-
-constructor(ground_y){
+constructor(level){
+    
     super();
-   
+    this.level = level;
     
     
     

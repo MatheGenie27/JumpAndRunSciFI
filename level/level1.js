@@ -80,7 +80,14 @@ function createForeground(){
 
 
 function createEnemies(){
-    level1.enemies.push(new Shell(level1.ground_y));
+    level1.enemies.push(new Shell(level1));
+    level1.enemies.push(new Fly(level1));
+    level1.enemies.push(new Punkgirl(level1));
+    level1.enemies.push(new Sentinel(level1));
+    level1.enemies.push(new Komo(level1));
+    level1.enemies.push(new BigPedal(level1));
+    level1.enemies.push(new Soldier2(level1));
+    level1.enemies.push(new RoboSoldier(level1));
 }
 
 
