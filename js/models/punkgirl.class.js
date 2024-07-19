@@ -65,6 +65,8 @@ class Punkgirl extends Enemy {
 
 
     animate(){
+
+        console.log("starte punk girl animation");
     
         setInterval(() => {
           //this.walking_sound.pause();

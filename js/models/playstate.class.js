@@ -1,16 +1,23 @@
 class PlayState extends State {
 
     
-    world = new World(this.game);
+    
 
     constructor(game){
         super(game);
+        //scriptCom();
     }
 
 
     enter() {
         console.log("Entering Play State");
         // Initialisierung des Spiels
+        this.world = new World(this.game);
+        initLevel();
+        this.world.declareLevel();
+        this.world.initCharacter();
+        //scriptCom();
+        //createEnemies();
     }
 
     update() {
